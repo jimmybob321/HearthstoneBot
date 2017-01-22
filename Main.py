@@ -3,7 +3,7 @@ width, height = pyautogui.size()
 
 def playCard():
     pyautogui.moveTo(850, 925, duration=0.25)
-    pyautogui.dragRel(0,-450,duration=1).5
+    pyautogui.dragRel(0,-450,duration=1.5)
 def passTurn():
     pyautogui.moveTo(2725,975,duration=0.25)
     pyautogui.click()
