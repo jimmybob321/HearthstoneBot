@@ -1,8 +1,9 @@
 import time,pyautogui
 width, height = pyautogui.size()
-pyautogui.moveTo(100,100,duration=0.25)
+
 def playCard():
-    pyautogui.dragrel(0,650,duration=0.25)
+    pyautogui.moveTo(850, 925, duration=0.25)
+    pyautogui.dragRel(0,-450,duration=1).5
 def passTurn():
     pyautogui.moveTo(2725,975,duration=0.25)
     pyautogui.click()
@@ -13,5 +14,16 @@ def hitTaunt():
 def startGame():
     pyautogui.moveTo(2450, 1675, duration=0.25)
     pyautogui.click()
+def think():
+    time.sleep(2)
+def detectTarget():
+    pass
+def checkCards():
+    pass
+def checkMinions():
+    pass
 
-
+while True:
+    break
+time.sleep(5)
+playCard()
