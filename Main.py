@@ -12,11 +12,6 @@ def passTurn(turn):
     pyautogui.click()
     turn = False
     return turn
-def goFace():
-    pass
-
-def hitTaunt():
-    pass
 
 def startGame():
     pyautogui.moveTo(2450, 1675, duration=0.25)
@@ -31,7 +26,20 @@ def checkTurn(turn,state):
     return turn
 
 def detectTarget():
-    pass
+    positions = ["850-925", "850-925", "850-925", "850-925", "850-925", "850-925", "850-925", "850-925"]
+    attackX = 0
+    attacky = 0
+
+    for x in range(0, 7):
+        a = positions[x].split("-")
+        positionX = a[0]
+        positionY = a[1]
+
+        if state.getpixel(positionX, positionY) == (111, 111, 111):
+            attackX = positionX
+            attackY = positionY
+    return attackX, attackY
+
 
 def checkCards(img,numCards):
     #return number of cards in hand and the position of the card to play
@@ -51,7 +59,15 @@ def checkCards(img,numCards):
     return count,cardx,cardy
 
 def checkMinions():
-    pass
+    positions =["850-925","850-925","850-925","850-925","850-925","850-925","850-925","850-925"]
+    for x in range(0,7):
+        a = positions[x].split("-")
+        positionX = a[0]
+        positionY = a[1]
+        if state.getpixel(positionX, positionY) == (111, 111, 111):
+            positionXTarget, positionYTarget = detectTarget()
+            pyautogui.moveTo(positionX, positionY, duration=0.25)
+            pyautogui.dragRel(-positionX-PositionXTarget,-positionY-positionYTarget, duration=1.5)
 
 def emote():
     #emotes so it looks like a real peron
@@ -76,9 +92,9 @@ while True:
 
             count,cardx,cardy = checkCards(state)
             think()
+        checkMinions()
 
         turn = passTurn(turn)
 
-    break
 
 
